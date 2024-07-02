@@ -1,0 +1,14 @@
+USE funnysite;
+
+CREATE TABLE user (
+    id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nick varchar(20) UNIQUE NOT NULL,
+    hash varchar(60) NOT NULL,
+    status ENUM('ACTIVE', 'BLOCKED') NOT NULL DEFAULT 'ACTIVE',
+    is_admin BOOLEAN NOT NULL DEFAULT 0,
+    created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modified TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
+
+    PRIMARY KEY (id),
+    INDEX idx_nick (nick)
+);
